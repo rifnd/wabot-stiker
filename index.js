@@ -1,6 +1,6 @@
 const {
 default: makeWASocket,
-useSingleFileAuthState,
+useMultiFileAuthState,
 downloadMediaMessage,
 DisconnectReason
 } = require("@adiwajshing/baileys");
@@ -11,7 +11,7 @@ const P = require("pino");
 const {writeExifImg}= require("./lib/exif.js");
 
 // Session
-const { state, saveState } = useSingleFileAuthState("sessions.json");
+const { state, saveCreds } = useMultiFileAuthState("session");
 
 const logger = P();
 function runBot() {
@@ -53,7 +53,7 @@ sock.sendMessage(msg.key.remoteJid, {sticker:{url: buffer}});
 });
 
 sock.ev.on("creds.update",
-saveState);
+saveCreds);
 }
 
 runBot();
