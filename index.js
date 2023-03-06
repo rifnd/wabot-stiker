@@ -11,7 +11,7 @@ const P = require("pino");
 const {writeExifImg}= require("./lib/exif.js");
 
 // Session
-const { state, saveCreds } = useMultiFileAuthState("session");
+const { state, saveCreds } = useMultiFileAuthState("./session");
 
 const logger = P();
 function runBot() {
