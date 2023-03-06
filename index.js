@@ -10,11 +10,9 @@ const P = require("pino");
 // Exif
 const {writeExifImg}= require("./lib/exif.js");
 
-// Session
-const { state, saveCreds } = useMultiFileAuthState("./session");
-
 const logger = P();
 function runBot() {
+const { state, saveCreds } = await useMultiFileAuthState("./session")
 const sock = makeWASocket({
 auth: state,
 printQRInTerminal: true,
