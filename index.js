@@ -12,7 +12,7 @@ const {writeExifImg}= require("./lib/exif.js");
 
 const logger = P();
 async function runBot() {
-const { state, saveCreds } = useMultiFileAuthState("./session")
+const { state, saveState, saveCreds } = await useMultiFileAuthState("./session")
 const sock = makeWASocket({
 auth: state,
 printQRInTerminal: true,
